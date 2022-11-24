@@ -102,7 +102,7 @@
 
                                                 <div class="col-auto">
 
-                                                    <a class="btn btn-sm btn-spinner btn-info" href="/media"+ item.id title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file"></i></a>
+                                                     <a class="btn btn-sm btn-spinner btn-info" :href="'../media/' + item.imagen.id + '/' + item.imagen.file_name" target= '_blank' title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file"></i></a>
 
                                                 </div>
                                             </div>

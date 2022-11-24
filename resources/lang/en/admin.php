@@ -71,5 +71,35 @@ return [
         ],
     ],
 
+    'medium' => [
+        'title' => 'Media',
+
+        'actions' => [
+            'index' => 'Media',
+            'create' => 'New Medium',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'model_type' => 'Model type',
+            'model_id' => 'Model',
+            'uuid' => 'Uuid',
+            'collection_name' => 'Collection name',
+            'name' => 'Name',
+            'file_name' => 'File name',
+            'mime_type' => 'Mime type',
+            'disk' => 'Disk',
+            'conversions_disk' => 'Conversions disk',
+            'size' => 'Size',
+            'manipulations' => 'Manipulations',
+            'custom_properties' => 'Custom properties',
+            'generated_conversions' => 'Generated conversions',
+            'responsive_images' => 'Responsive images',
+            'order_column' => 'Order column',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

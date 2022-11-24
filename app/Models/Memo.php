@@ -42,6 +42,7 @@ class Memo extends Model implements HasMedia
     ];
 
     protected $appends = ['resource_url'];
+    protected $with = ['imagen'];
 
 
     function registerMediaCollections(): void
@@ -66,5 +67,11 @@ class Memo extends Model implements HasMedia
     public function getResourceUrlAttribute()
     {
         return url('/admin/memos/'.$this->getKey());
+    }
+
+    public function imagen()
+    {
+        return $this->belongsTo('App\Models\Medium', 'id', 'model_id');
+
     }
 }
