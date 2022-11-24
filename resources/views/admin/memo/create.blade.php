@@ -5,9 +5,7 @@
 @section('body')
 
     <div class="container-xl">
-
                 <div class="card">
-
         <memo-form
             :action="'{{ url('admin/memos') }}'"
             v-cloak
@@ -34,7 +32,6 @@
                         {{ trans('brackets/admin-ui::admin.btn.save') }}
                     </button>
                 </div>
-
             </form>
 
         </memo-form>

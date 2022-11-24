@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Memo\BulkDestroyMemo;
 use App\Http\Requests\Admin\Memo\DestroyMemo;
@@ -19,6 +18,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use PDF;
 
 class MemoController extends Controller
 {
@@ -178,7 +178,6 @@ class MemoController extends Controller
                 ->chunk(1000)
                 ->each(static function ($bulkChunk) {
                     Memo::whereIn('id', $bulkChunk)->delete();
-
                     // TODO your code goes here
                 });
         });
@@ -196,14 +195,12 @@ class MemoController extends Controller
         foreach ($memo->getMedia('gallery') as $key => $value) {
             array_push($datos, $value->getUrl());
         }
-           return $memo;
+           // $memo;
 
         //return $project;
         // TODO your code goes here
         return view('admin.memo.index', compact('datos', 'memo'));
     }
-
-
 
     // public function syncimage(Project $project, $rel)
     // {

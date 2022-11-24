@@ -12,7 +12,7 @@
                 :data="{{ $memo->toJson() }}"
                 v-cloak
                 inline-template>
-            
+
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
 
 
@@ -22,22 +22,27 @@
 
                     <div class="card-body">
                         @include('admin.memo.components.form-elements')
+                        @include('brackets/admin-ui::admin.includes.media-uploader', [
+                            'mediaCollection' => app(App\Models\Memo::class)->getMediaCollection('gallery'),
+                            'media' => $memo->getThumbs200ForCollection('gallery'),
+                            'label' => 'Foto'
+                        ])
                     </div>
-                    
-                    
+
+
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary" :disabled="submiting">
                             <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
                             {{ trans('brackets/admin-ui::admin.btn.save') }}
                         </button>
                     </div>
-                    
+
                 </form>
 
         </memo-form>
 
         </div>
-    
+
 </div>
 
 @endsection

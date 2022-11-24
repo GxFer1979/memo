@@ -95,17 +95,16 @@
                                             <div class="row no-gutters">
                                                 <div class="col-auto">
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
-                                                </div>
+                                                    </div>
+                                                    <form class="col" @submit.prevent="deleteItem(item.resource_url)">
+                                                    <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
+                                                </form>
 
                                                 <div class="col-auto">
 
-                                                <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url  + '/showmemo'" title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file"></i></a>
-                                            </div>
+                                                    <a class="btn btn-sm btn-spinner btn-info" href="/media"+ item.id title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file"></i></a>
 
-
-                                                <form class="col" @submit.prevent="deleteItem(item.resource_url)">
-                                                    <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
-                                                </form>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
