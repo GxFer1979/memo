@@ -30,7 +30,7 @@ class StoreMemo extends FormRequest
             'number_memo' => ['required', 'string'],
             'ref_obs' => ['required', 'string'],
             'date_doc' => ['required', 'date'],
-            'date_entry' => ['required', 'date'],
+            'date_entry' => ['nullable'],
             'date_exit' => ['required', 'date'],
             'ddependency' => ['required'],
             'admin_user' => ['required'],

@@ -10,6 +10,8 @@ use App\Http\Requests\Admin\Memo\UpdateMemo;
 use App\Models\Memo;
 use App\Models\Dependency;
 use App\Models\AdminUser;
+use Carbon\Carbon;
+
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -87,6 +89,8 @@ class MemoController extends Controller
         $sanitized ['odependency_id']=  $request->getOdependencyId();
         $sanitized ['ddependency_id']=  $request->getDdependencyId();
         $sanitized ['admin_user_id']=  $request->getUserId();
+        $sanitized ['date_entry']=Carbon::now();
+
 
         // Store the Memo
         $memo = Memo::create($sanitized);

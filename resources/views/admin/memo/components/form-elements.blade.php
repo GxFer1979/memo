@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('date_entry'), 'has-success': fields.date_entry && fields.date_entry.valid }">
+{{-- <div class="form-group row align-items-center" :class="{'has-danger': errors.has('date_entry'), 'has-success': fields.date_entry && fields.date_entry.valid }">
     <label for="date_entry" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.memo.columns.date_entry') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-sm-8'">
         <div class="input-group input-group--custom">
@@ -52,7 +52,7 @@
         </div>
         <div v-if="errors.has('date_entry')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('date_entry') }}</div>
     </div>
-</div>
+</div> --}}
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('date_exit'), 'has-success': fields.date_exit && fields.date_exit.valid }">
     <label for="date_exit" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.memo.columns.date_exit') }}</label>
