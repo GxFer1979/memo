@@ -70,7 +70,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'MemoController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{memo}',                                      'MemoController@update')->name('update');
             Route::delete('/{memo}',                                    'MemoController@destroy')->name('destroy');
-            Route::get('/{memo}/showmemo',                              'MemoController@showmemo')->name('showmemo');
         });
     });
 });

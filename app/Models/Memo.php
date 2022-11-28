@@ -42,7 +42,7 @@ class Memo extends Model implements HasMedia
     ];
 
     protected $appends = ['resource_url'];
-    protected $with = ['imagen'];
+    protected $with = ['imagen', 'odependencia', 'ddependencia', 'admin_user'];
 
 
     function registerMediaCollections(): void
@@ -74,4 +74,24 @@ class Memo extends Model implements HasMedia
         return $this->belongsTo('App\Models\Medium', 'id', 'model_id');
 
     }
+
+    public function odependencia()
+    {
+        return $this->belongsTo('App\Models\Dependency', 'odependency_id', 'id');
+
+    }
+
+    public function ddependencia()
+    {
+        return $this->belongsTo('App\Models\Dependency', 'ddependency_id', 'id');
+
+    }
+
+    public function admin_user()
+    {
+        return $this->belongsTo('App\Models\AdminUser', 'admin_user_id', 'id');
+
+    }
+
 }
+

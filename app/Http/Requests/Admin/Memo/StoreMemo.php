@@ -26,15 +26,15 @@ class StoreMemo extends FormRequest
     public function rules(): array
     {
         return [
-            'odependency_id' => ['required', 'integer'],
+            'odependency' => ['required'],
             'number_memo' => ['required', 'string'],
             'ref_obs' => ['required', 'string'],
             'date_doc' => ['required', 'date'],
             'date_entry' => ['required', 'date'],
             'date_exit' => ['required', 'date'],
-            'ddependency_id' => ['required', 'integer'],
-            'admin_user_id' => ['required', 'integer'],
-            
+            'ddependency_id' => ['required'],
+            'admin_user' => ['required'],
+
         ];
     }
 
@@ -50,5 +50,20 @@ class StoreMemo extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getOdependencyId()
+    {
+        return $this->get('odependency')['id'];
+    }
+
+    public function getDdependencyId()
+    {
+        return $this->get('ddependency')['id'];
+    }
+
+    public function getUserId()
+    {
+        return $this->get('admin_user')['id'];
     }
 }

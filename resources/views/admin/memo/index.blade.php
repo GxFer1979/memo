@@ -42,22 +42,25 @@
                             <table class="table table-hover table-listing">
                                 <thead>
                                     <tr>
-                                        <th class="bulk-checkbox">
+                                        {{-- <th class="bulk-checkbox">
                                             <input class="form-check-input" id="enabled" type="checkbox" v-model="isClickedAll" v-validate="''" data-vv-name="enabled"  name="enabled_fake_element" @click="onBulkItemsClickedAllWithPagination()">
                                             <label class="form-check-label" for="enabled">
                                                 #
                                             </label>
-                                        </th>
+                                        </th> --}}
 
-                                        <th is='sortable' :column="'id'">{{ trans('admin.memo.columns.id') }}</th>
-                                        <th is='sortable' :column="'odependency_id'">{{ trans('admin.memo.columns.odependency_id') }}</th>
+                                        {{-- <th is='sortable' :column="'id'">{{ trans('admin.memo.columns.id') }}</th> --}}
                                         <th is='sortable' :column="'number_memo'">{{ trans('admin.memo.columns.number_memo') }}</th>
                                         <th is='sortable' :column="'ref_obs'">{{ trans('admin.memo.columns.ref_obs') }}</th>
                                         <th is='sortable' :column="'date_doc'">{{ trans('admin.memo.columns.date_doc') }}</th>
+                                        <th is='sortable' :column="'odependency_id'">{{ trans('admin.memo.columns.odependency_id') }}</th>
+                                        <th is='sortable' :column="'ddependency_id'">{{ trans('admin.memo.columns.ddependency_id') }}</th>
                                         <th is='sortable' :column="'date_entry'">{{ trans('admin.memo.columns.date_entry') }}</th>
                                         <th is='sortable' :column="'date_exit'">{{ trans('admin.memo.columns.date_exit') }}</th>
-                                        <th is='sortable' :column="'ddependency_id'">{{ trans('admin.memo.columns.ddependency_id') }}</th>
                                         <th is='sortable' :column="'admin_user_id'">{{ trans('admin.memo.columns.admin_user_id') }}</th>
+
+
+
 
                                         <th></th>
                                     </tr>
@@ -75,21 +78,21 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in collection" :key="item.id" :class="bulkItems[item.id] ? 'bg-bulk' : ''">
-                                        <td class="bulk-checkbox">
+                                        {{-- <td class="bulk-checkbox">
                                             <input class="form-check-input" :id="'enabled' + item.id" type="checkbox" v-model="bulkItems[item.id]" v-validate="''" :data-vv-name="'enabled' + item.id"  :name="'enabled' + item.id + '_fake_element'" @click="onBulkItemClicked(item.id)" :disabled="bulkCheckingAllLoader">
                                             <label class="form-check-label" :for="'enabled' + item.id">
                                             </label>
-                                        </td>
+                                        </td> --}}
 
-                                    <td>@{{ item.id }}</td>
-                                        <td>@{{ item.odependency_id }}</td>
+                                    {{-- <td>@{{ item.id }}</td> --}}
                                         <td>@{{ item.number_memo }}</td>
                                         <td>@{{ item.ref_obs }}</td>
                                         <td>@{{ item.date_doc | date }}</td>
+                                        <td>@{{ item.odependencia.name }}</td>
+                                        <td>@{{ item.ddependencia.name }}</td>
                                         <td>@{{ item.date_entry | date }}</td>
                                         <td>@{{ item.date_exit | date }}</td>
-                                        <td>@{{ item.ddependency_id }}</td>
-                                        <td>@{{ item.admin_user_id }}</td>
+                                        <td>@{{ item.admin_user.full_name }}</td>
 
                                         <td>
                                             <div class="row no-gutters">
@@ -97,12 +100,12 @@
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
                                                     </div>
                                                     <form class="col" @submit.prevent="deleteItem(item.resource_url)">
-                                                    <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
+                                                    {{-- <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button> --}}
                                                 </form>
 
                                                 <div class="col-auto">
 
-                                                     <a class="btn btn-sm btn-spinner btn-info" :href="'../media/' + item.imagen.id + '/' + item.imagen.file_name" target= '_blank' title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file"></i></a>
+                                                     <a class="btn btn-sm btn-danger" :href="'../media/' + item.imagen.id + '/' + item.imagen.file_name" target= '_blank' title="{{ trans('brackets/admin-ui::admin.btn.show') }}" role="button"><i class="fa fa-file-pdf-o"></i>&nbsp;PDF</a>
 
                                                 </div>
                                             </div>

@@ -26,15 +26,15 @@ class UpdateMemo extends FormRequest
     public function rules(): array
     {
         return [
-            'odependency_id' => ['sometimes', 'integer'],
+            'odependency' => ['sometimes'],
             'number_memo' => ['sometimes', 'string'],
             'ref_obs' => ['sometimes', 'string'],
             'date_doc' => ['sometimes', 'date'],
             'date_entry' => ['sometimes', 'date'],
             'date_exit' => ['sometimes', 'date'],
-            'ddependency_id' => ['sometimes', 'integer'],
-            'admin_user_id' => ['sometimes', 'integer'],
-            
+            'ddependency_id' => ['sometimes'],
+            'admin_user' => ['sometimes'],
+
         ];
     }
 
@@ -52,4 +52,20 @@ class UpdateMemo extends FormRequest
 
         return $sanitized;
     }
+
+    public function getOdependencyId()
+    {
+        return $this->get('odependency')['id'];
+    }
+
+    public function getDdependencyId()
+    {
+        return $this->get('ddependency')['id'];
+    }
+
+    public function getUserId()
+    {
+        return $this->get('admin_user')['id'];
+    }
+
 }

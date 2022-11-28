@@ -8,6 +8,9 @@
                 <div class="card">
         <memo-form
             :action="'{{ url('admin/memos') }}'"
+            :odependency="{{$odependency->toJson()}}"
+            :ddependency="{{$ddependency->toJson()}}"
+            :admin_user="{{$admin_user->toJson()}}"
             v-cloak
             inline-template>
 

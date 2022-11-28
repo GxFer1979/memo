@@ -10,6 +10,9 @@
             <memo-form
                 :action="'{{ $memo->resource_url }}'"
                 :data="{{ $memo->toJson() }}"
+                :odependency="{{$odependency->toJson()}}"
+                :ddependency="{{$ddependency->toJson()}}"
+                :admin_user="{{$admin_user->toJson()}}"
                 v-cloak
                 inline-template>
 

@@ -8,6 +8,8 @@ use App\Http\Requests\Admin\Memo\IndexMemo;
 use App\Http\Requests\Admin\Memo\StoreMemo;
 use App\Http\Requests\Admin\Memo\UpdateMemo;
 use App\Models\Memo;
+use App\Models\Dependency;
+use App\Models\AdminUser;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -65,7 +67,11 @@ class MemoController extends Controller
     {
         $this->authorize('admin.memo.create');
 
-        return view('admin.memo.create');
+        $odependency = Dependency::all();
+        $ddependency = Dependency::all();
+        $admin_user = AdminUser::all();
+
+        return view('admin.memo.create', compact('odependency', 'ddependency', 'admin_user'));
     }
 
     /**
@@ -78,6 +84,9 @@ class MemoController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized ['odependency_id']=  $request->getOdependencyId();
+        $sanitized ['ddependency_id']=  $request->getDdependencyId();
+        $sanitized ['admin_user_id']=  $request->getUserId();
 
         // Store the Memo
         $memo = Memo::create($sanitized);
@@ -114,9 +123,14 @@ class MemoController extends Controller
     {
         $this->authorize('admin.memo.edit', $memo);
 
-
+        $odependency = Dependency::all();
+        $ddependency = Dependency::all();
+        $admin_user = AdminUser::all();
         return view('admin.memo.edit', [
             'memo' => $memo,
+            'odependency' => $odependency,
+            'ddependency' => $ddependency,
+            'admin_user' => $admin_user,
         ]);
     }
 
@@ -131,6 +145,9 @@ class MemoController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized ['odependency_id']=  $request->getOdependencyId();
+        $sanitized ['ddependency_id']=  $request->getDdependencyId();
+        $sanitized ['admin_user_id']=  $request->getUserId();
 
         // Update changed values Memo
         $memo->update($sanitized);
@@ -184,72 +201,4 @@ class MemoController extends Controller
 
         return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
     }
-
-
-    public function showmemo(Memo $memo)
-    {
-        //$this->authorize('admin.visit.show', $visit);
-        //return $visit->getMedia('gallery')->count();
-        $datos = [];
-       $memo = Memo::find($memo->id);
-        foreach ($memo->getMedia('gallery') as $key => $value) {
-            array_push($datos, $value->getUrl());
-        }
-           // $memo;
-
-        //return $project;
-        // TODO your code goes here
-        return view('admin.memo.index', compact('datos', 'memo'));
-    }
-
-    // public function syncimage(Project $project, $rel)
-    // {
-    //     //return "hola";
-
-    //     $data = [];
-    //    // $response = Http::get("https://analisis.stp.gov.py/user/muvh/api/v2/sql?api_key=04fd4c0ac550ea7ddf750e8426c05e0f9f907784&q=select * from muvhssm.v_capturas_muvh where muvhssm.v_capturas_muvh.relevamientos_id=" . $rel);
-    //     $imagenes = collect($response['rows']);
-
-    //     //return $imagenes;
-
-    //     $time = time();
-
-    //     \Storage::disk('local')->makeDirectory($time,$mode=0775); // zip store here
-    //     //$zip_file=storage_path('app/tobedownload/invoices.zip');
-
-
-    //     $name = 'IMG-'.time().'.zip';
-    //     $zipper = new \Madnest\Madzipper\Madzipper;
-
-    //     $data = [];
-    //     foreach ($imagenes as $key => $value) {
-    //         # code...
-    //         //$url = $value['imagen'];
-    //         $img = storage_path('app/'.$time.'/'.basename($value['imagen']));
-    //         file_put_contents($img, file_get_contents($value['imagen']));
-
-
-    //         //$data[$key] = basename($url);
-
-    //     }
-
-
-    //     $files = glob(storage_path('app/'.$time.'/*'));
-    //     $zipper->make(storage_path("app/tobedownload/".$name))->add($files);
-
-
-    //     $zipper->close();
-
-    //     return response()->download(storage_path("app/tobedownload/".$name));
-
-    //     //return view('admin.visit.syncimage', compact('project', 'imagenes'));
-    // }
-
-    // public function download($name)
-    // {
-    //     $filename = $name . '.jpg';
-    //     $tempImage = tempnam(sys_get_temp_dir(), $filename);
-    //   //  copy('https://movil.stp.gov.py/staticFiles/' . $name . '.jpg', $tempImage);
-    //     return response()->download($tempImage, $filename);
-    // }
 }
