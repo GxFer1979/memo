@@ -32,7 +32,7 @@ class UpdateMemo extends FormRequest
             'date_doc' => ['sometimes', 'date'],
             'date_entry' => ['sometimes', 'date'],
             'date_exit' => ['sometimes', 'date'],
-            'ddependency_id' => ['sometimes'],
+            'ddependency' => ['sometimes'],
             'admin_user' => ['sometimes'],
 
         ];
