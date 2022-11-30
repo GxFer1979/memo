@@ -87,11 +87,11 @@
                                     {{-- <td>@{{ item.id }}</td> --}}
                                         <td>@{{ item.number_memo }}</td>
                                         <td>@{{ item.ref_obs }}</td>
-                                        <td>@{{ item.date_doc | date }}</td>
+                                        <td>@{{ item.date_doc | datetime }}</td>
                                         <td>@{{ item.odependencia.name }}</td>
                                         <td>@{{ item.ddependencia.name }}</td>
-                                        <td>@{{ item.date_entry | date }}</td>
-                                        <td>@{{ item.date_exit | date }}</td>
+                                        <td>@{{ item.date_entry | datetime }}</td>
+                                        <td>@{{ item.date_exit | datetime }}</td>
                                         <td>@{{ item.admin_user.full_name }}</td>
 
                                         <td>

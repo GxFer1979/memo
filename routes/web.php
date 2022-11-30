@@ -89,3 +89,19 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('memos')->name('memos/')->group(static function() {
+            Route::get('/',                                             'MemoController@index')->name('index');
+            Route::get('/create',                                       'MemoController@create')->name('create');
+            Route::post('/',                                            'MemoController@store')->name('store');
+            Route::get('/{memo}/edit',                                  'MemoController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'MemoController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{memo}',                                      'MemoController@update')->name('update');
+            Route::delete('/{memo}',                                    'MemoController@destroy')->name('destroy');
+        });
+    });
+});

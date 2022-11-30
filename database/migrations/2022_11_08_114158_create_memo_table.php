@@ -20,13 +20,14 @@ class CreateMemoTable extends Migration
             $table->string('number_memo');
             $table->string('ref_obs');
             $table->date('date_doc');
-            $table->date('date_entry');
-            $table->date('date_exit');
+            $table->timestamp('date_entry');
+            $table->timestamp('date_exit');
             $table->integer('ddependency_id');
             $table->foreign('ddependency_id')->references('id')->on('dependencies');
             $table->integer('admin_user_id');
             $table->foreign('admin_user_id')->references('id')->on('admin_users');
             $table->timestamps();
+
         });
     }
 

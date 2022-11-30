@@ -87,3 +87,37 @@ $factory->define(App\Models\Medium::class, static function (Faker\Generator $fak
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Memo::class, static function (Faker\Generator $faker) {
+    return [
+        'odependency_id' => $faker->randomNumber(5),
+        'number_memo' => $faker->sentence,
+        'ref_obs' => $faker->sentence,
+        'date_doc' => $faker->dateTime,
+        'date_entry' => $faker->dateTime,
+        'date_exit' => $faker->dateTime,
+        'ddependency_id' => $faker->randomNumber(5),
+        'admin_user_id' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Memo::class, static function (Faker\Generator $faker) {
+    return [
+        'odependency_id' => $faker->randomNumber(5),
+        'number_memo' => $faker->sentence,
+        'ref_obs' => $faker->sentence,
+        'date_doc' => $faker->date(),
+        'date_entry' => $faker->dateTime,
+        'date_exit' => $faker->dateTime,
+        'ddependency_id' => $faker->randomNumber(5),
+        'admin_user_id' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

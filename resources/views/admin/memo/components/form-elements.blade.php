@@ -59,7 +59,7 @@
     <div :class="isFormLocalized ? 'col-md-4' : 'col-sm-8'">
         <div class="input-group input-group--custom">
             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-            <datetime v-model="form.date_exit" :config="datePickerConfig" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss'" class="flatpickr" :class="{'form-control-danger': errors.has('date_exit'), 'form-control-success': fields.date_exit && fields.date_exit.valid}" id="date_exit" name="date_exit" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
+            <datetime v-model="form.date_exit" :config="datetimePickerConfig" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss'" class="flatpickr" :class="{'form-control-danger': errors.has('date_exit'), 'form-control-success': fields.date_exit && fields.date_exit.valid}" id="date_exit" name="date_exit" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
         </div>
         <div v-if="errors.has('date_exit')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('date_exit') }}</div>
     </div>
